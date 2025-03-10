@@ -19,7 +19,7 @@ console.log(Car.speed())
 
 class AdvanceArray extends Array{
   find(value){
-    let val = this.filter(item => item.value === value);
+    let val = this.filter(item => item === value);
     return val.length === 0 ? 'error' : val[0];
   }
 }
