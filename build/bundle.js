@@ -16,7 +16,7 @@
   \************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ data)\n/* harmony export */ });\nfunction data() {\n  console.log(\"Webpack Works Successfully!!\");\n}\n\n//# sourceURL=webpack:///./ES6/webpack.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   data: () => (/* binding */ data),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   obj: () => (/* binding */ obj)\n/* harmony export */ });\nfunction data() {\n  console.log(\"Webpack Works Successfully!!\");\n}\n\nconst obj = {\n  name: \"yasin\",\n  age: 26\n}\n\nclass Logger {\n  success(message) {\n    console.log('success ==>', message);\n  }\n  \n  error(message) {\n    console.log('success ==>', message);\n  }\n}\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new Logger());\n\n//# sourceURL=webpack:///./ES6/webpack.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*******************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ES6/webpack.js */ \"./ES6/webpack.js\");\n\n(0,_ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\n//# sourceURL=webpack:///./script.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ES6/webpack.js */ \"./ES6/webpack.js\");\n\n\n(0,_ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__.data)()\n\nconsole.log(_ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__.obj)\n\n_ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].error('test error on object');\n_ES6_webpack_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].success('test success');\n\n//# sourceURL=webpack:///./script.js?");
 
 /***/ })
 
