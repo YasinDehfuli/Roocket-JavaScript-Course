@@ -23,17 +23,26 @@ submitButton.addEventListener('click', (e) => {
   countMessage.textContent = 'لطفا شکیبا باشید تا زمان به اتمام برسد!!'
   circleTime.innerText = time;
   
+  let originalSeconds = time
+  let lastTime = ''
   const timerId = setInterval(() => {
     if (time <= 0) {
       clearInterval(timerId);
       circleCounter.classList.remove('active');
       startBox.classList.remove('di-active');
       countMessage.textContent = 'شمارش به پایان رسید !!'
-      
+      circleCounter.classList.remove(lastTime)
+      inputValue.value = '';
+      return;
     }
     
+    if (lastTime)  circleCounter.classList.remove(lastTime)
+    
     time -= 1;
+    let percent = Math.floor(((originalSeconds - time) / originalSeconds) * 100)
+    lastTime = `p${percent}`
     circleTime.innerText = time;
+    circleCounter.classList.add(`p${percent}`)
   }, 1000)
   
   console.log(time)
