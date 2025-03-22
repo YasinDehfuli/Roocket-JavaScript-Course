@@ -1,7 +1,5 @@
-const startBox = document.querySelector('.startBox');
 const submitButton = document.querySelector('#submit');
 const inputValue = document.querySelector('#input');
-const errorMessage = document.querySelector('.errorMessage');
 const circleCounter = document.querySelector('.c100');
 const countMessage = document.querySelector('.countMessage');
 const circleTime = document.querySelector('.circleTime');
@@ -10,17 +8,13 @@ const circleTime = document.querySelector('.circleTime');
 submitButton.addEventListener('click', (e) => {
   let time = parseInt(inputValue.value)
   
-  if (isNaN(time)) {
-    errorMessage.textContent = 'لطفا فیلد را به درستی پر کنید !';
-    errorMessage.classList.add('active');
-    
-    return;
-  }
+  if (isNaN(time)) return toggleErrorMessage({show: true, message: 'لطفا فیلد را به درستی پر کنید !'})
   
-  errorMessage.classList.remove('active');
-  startBox.classList.add('di-active');
+  
+  toggleErrorMessage({show: false})
+  toggleStartBox({show: true})
   circleCounter.classList.add('active');
-  countMessage.textContent = 'لطفا شکیبا باشید تا زمان به اتمام برسد!!'
+  mainMessage({message: 'لطفا شکیبا باشید تا زمان به اتمام برسد!!'})
   circleTime.innerText = time;
   
   let originalSeconds = time
@@ -29,14 +23,14 @@ submitButton.addEventListener('click', (e) => {
     if (time <= 0) {
       clearInterval(timerId);
       circleCounter.classList.remove('active');
-      startBox.classList.remove('di-active');
-      countMessage.textContent = 'شمارش به پایان رسید !!'
+      toggleStartBox({show: false})
+      mainMessage({message: 'شمارش به پایان رسید !!'})
       circleCounter.classList.remove(lastTime)
       inputValue.value = '';
       return;
     }
     
-    if (lastTime)  circleCounter.classList.remove(lastTime)
+    if (lastTime) circleCounter.classList.remove(lastTime)
     
     time -= 1;
     let percent = Math.floor(((originalSeconds - time) / originalSeconds) * 100)
@@ -48,3 +42,28 @@ submitButton.addEventListener('click', (e) => {
   console.log(time)
 })
 
+let toggleErrorMessage = ({show, message}) => {
+  const errorMessage = document.querySelector('.errorMessage');
+  
+  if (show) {
+    errorMessage.textContent = message;
+    errorMessage.classList.add('active');
+  } else {
+    errorMessage.textContent = null;
+    errorMessage.classList.remove('active');
+  }
+}
+
+let toggleStartBox = ({show}) => {
+  const startBox = document.querySelector('.startBox');
+  
+  if (show) {
+    startBox.classList.add('di-active');
+  } else {
+    startBox.classList.remove('di-active');
+  }
+}
+
+let mainMessage = ({message}) => {
+  countMessage.textContent = message
+}
