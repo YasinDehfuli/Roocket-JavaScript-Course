@@ -6,16 +6,6 @@ const play = controls.querySelector('.play')
 const rewind = controls.querySelector('.rewind')
 const forward = controls.querySelector('.forward')
 
-playerArea.addEventListener('click', () => {
-  if (video.paused) {
-    video.play()
-    doChangePlayerIcon()
-  } else {
-    video.pause()
-    doChangePlayerIcon()
-  }
-})
-
 play.addEventListener('click', () => {
   if (video.paused) {
     video.play()
