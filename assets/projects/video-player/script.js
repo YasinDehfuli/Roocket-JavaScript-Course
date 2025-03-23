@@ -10,6 +10,10 @@ const timer = controls.querySelector('.timer')
 let currentTime = timer.querySelector('.currentTime')
 let videoTime = timer.querySelector('.videoTime')
 
+const volumeToggle = controls.querySelector('.volume .icon')
+let volumeProgress = controls.querySelector('.volume .volume__progress')
+let volumeProgressBarInput = controls.querySelector('#volume_bar')
+
 let progressBar = controls.querySelector('.controls__progressbar-current')
 
 
@@ -41,6 +45,15 @@ rewind.addEventListener('click', () => {
 
 forward.addEventListener('click', () => {
   video.currentTime += 5
+})
+
+volumeToggle.addEventListener('click', function () {
+  volumeProgress.classList.toggle('active')
+})
+
+volumeProgressBarInput.addEventListener('input', function () {
+  video.volume = this.value / 100
+  this.style = `background: linear-gradient(90deg, rgba(230,126,34,1) ${this.value}%, #e1e1e1 50%);`
 })
 
 function doChangePlayerIcon() {

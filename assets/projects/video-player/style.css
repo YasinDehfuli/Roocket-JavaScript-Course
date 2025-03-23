@@ -147,7 +147,7 @@ body {
     height: 6px;
     width: 77px;
 
-    background: linear-gradient(90deg, rgba(230,126,34,1) 50%, #e1e1e1 50%);
+    background: linear-gradient(90deg, rgba(230,126,34,1) 70%, #e1e1e1 50%);
 }
 
 .volume__progress input[type="range"]::-moz-range-track {
