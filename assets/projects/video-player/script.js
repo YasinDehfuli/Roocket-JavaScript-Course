@@ -10,9 +10,14 @@ const timer = controls.querySelector('.timer')
 let currentTime = timer.querySelector('.currentTime')
 let videoTime = timer.querySelector('.videoTime')
 
+let progressBar = controls.querySelector('.controls__progressbar-current')
+
 
 video.addEventListener('timeupdate', function () {
   currentTime.textContent = doGetTime(video.currentTime)
+  
+  let barLength = (video.currentTime / video.duration) * 100
+  progressBar.style = `background : linear-gradient(90deg, rgba(230,126,34,1) ${barLength}%, #e1e1e1 0%);`
 })
 
 play.addEventListener('click', () => {
@@ -24,6 +29,10 @@ play.addEventListener('click', () => {
     video.pause()
     doChangePlayerIcon()
   }
+})
+
+progressBar.addEventListener('input', function () {
+  video.currentTime = (this.value / 100) * video.duration
 })
 
 rewind.addEventListener('click', () => {
