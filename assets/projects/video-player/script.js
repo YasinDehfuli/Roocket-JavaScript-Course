@@ -14,6 +14,8 @@ const volumeToggle = controls.querySelector('.volume .icon')
 let volumeProgress = controls.querySelector('.volume .volume__progress')
 let volumeProgressBarInput = controls.querySelector('#volume_bar')
 
+const fullScreen = controls.querySelector('.fullscreen')
+
 let progressBar = controls.querySelector('.controls__progressbar-current')
 
 
@@ -56,6 +58,10 @@ volumeProgressBarInput.addEventListener('input', function () {
   this.style = `background: linear-gradient(90deg, rgba(230,126,34,1) ${this.value}%, #e1e1e1 50%);`
 })
 
+fullScreen.addEventListener('click', () => {
+  toggleFullScreen()
+})
+
 function doChangePlayerIcon() {
   const icon = playerArea.querySelector('.icon')
   
@@ -85,4 +91,33 @@ function doGetTime(time) {
 
 function doGetVideoDuration() {
   videoTime.textContent = doGetTime(video.duration)
+}
+
+function toggleFullScreen() {
+  if (document.fullscreenElement) {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitCancelFullScreen) {
+      document.webkitCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  } else {
+    if (!document.mozFullScreen && !document.webkitFullScreen) {
+      if (playerArea.requestFullscreen) {
+        playerArea.requestFullscreen();
+      }
+      else if (playerArea.mozRequestFullScreen) {
+        playerArea.mozRequestFullScreen();
+      }
+      else if (playerArea.webkitRequestFullScreen) {
+        playerArea.webkitRequestFullScreen();
+      }
+      else if (playerArea.msRequestFullscreen) {
+        playerArea.msRequestFullscreen();
+      }
+    }
+  }
 }
