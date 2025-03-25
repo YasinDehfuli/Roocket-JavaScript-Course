@@ -1,0 +1,14 @@
+body{
+    background: #efefef;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+}
+
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
